@@ -1,0 +1,234 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@charset "utf-8";
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/layout";
+@import "compass/typography/text/ellipsis";
+@import "compass/typography/links/link-colors";
+
+// 这里将是所有的颜色列表信息
+$dw-color-default:#ffffff;
+$dw-color-default-hover:#e6e6e6;
+
+$dw-color-success:#21B384;
+$dw-color-success-hover:#28A47C;
+
+$dw-color-primary:#4D96DF;
+$dw-color-primary-hover:#4684C3;
+
+$dw-color-warning:#FFBD7A;
+$dw-color-warning-hover:#F0AF6D;
+
+$dw-color-danger:#D9534F;
+$dw-color-danger-hover:#C74743;
+
+$dw-color-skyblue:#99CCFF;
+$dw-color-skyblue-hover:#8EB5DB;
+
+$dw-color-powderblue:#99CCCC;
+$dw-color-powderblue-hover:#85BDBD;
+
+$dw-color-springgreen:#66CC99;
+$dw-color-springgreen-hover:#5AB588;
+
+$dw-color-lightpurple:#CCCCFF;
+$dw-color-lightpurple-hover:#B8B8E9;
+
+$dw-color-lightgrey:#CCCCCC;
+$dw-color-lightgrey-hover:#C5C5C5;
+
+$dw-color-deepred:#AA314D;
+$dw-color-deepred-hover:#923248;
+
+.cpt-tabs-wrapper{
+	width:100%;
+	max-width: 1200px;
+	margin:0 auto;
+	overflow: hidden;
+	.tabs-info{
+		.tabs-pc{
+			.title{
+				.ul-pctabs-title{
+					width: 100%;
+					height: auto;
+					margin: 0;
+					padding:0;
+
+					.li-pctbas-title{
+						margin: 0;
+						width: 100%;
+						height: 40px;
+						line-height: 32px;
+						padding: 4px 10px;
+						background:rgba(0,0,0,0.5);
+						margin: 10px 0;
+						color: #fff;
+						cursor: pointer;
+						@include transition(all 0.5s ease);
+
+						// &:hover{
+						// 	background:$dw-color-success;
+						// }
+
+						&.active{
+							background:$dw-color-primary;
+						}
+					}
+				}
+			}
+
+			.content{
+				.ul-pctabs-content{
+					width: 100%;
+					height: auto;
+					margin: 0;
+					padding:0;
+					.li-pctbas-content{
+						display: none;
+						margin: 0;
+						width: 100%;
+						padding:10px;
+						background:rgba(0,0,0,0.36);
+						margin: 10px 0;
+						color: #fff;
+
+						.section{
+							padding: 5px;
+
+							.h1-section-title{
+								font-size: 16px;
+								line-height: 32px;
+							}
+
+							.h1-section-content{
+								font-size: 14px;
+								line-height: initial;
+							}
+						}
+
+						&.active{
+							display: block;
+						}
+					}
+				}
+			}
+		}
+
+		.tabs-mobile{
+			.ul-tabs-info{
+				margin: 0;
+				padding:10px;
+				.li-tabs-info{
+					width: 100%;
+					height: auto;
+
+					.div-tabs-title{
+						@include display-flex;
+						@include align-items(center);
+						background:rgba(0,0,0,0.5);
+						@include transition (all 0.5s linear);
+						
+						.h1-tabs-title{
+							@include flex(1 1 auto);
+							padding:4px 10px;
+							height: 40px;
+							line-height: 32px;
+							color: #fff;
+						}
+
+						.titleStatus{
+							@include flex(0 0 18px);
+							width: 18px;
+							height: 18px;
+							margin-right: 10px;
+							color: #fff;
+
+							&.dw-icon-tabs:before{
+								content: "\e900";
+							}
+						}
+					}
+
+					.div-tabs-content{
+						// height: 0px;
+						max-height: 0px;
+						min-height: 0;
+						padding:0;
+						@include transition (all 0.5s linear);
+						@include translate3d(0,0,0);
+						overflow: hidden;
+						background:rgba(0,0,0,0.36);
+						margin-bottom: 10px;
+						color: #fff;
+
+						.section{
+							padding: 5px;
+							.h1-section-title{
+								font-size: 16px;
+								line-height: 32px;
+							}
+
+							.h1-section-content{
+								font-size: 14px;
+								line-height: initial;
+							}
+						}
+
+						// &.active{
+						// 	height: auto;
+						// 	padding:10px;
+						// }
+					}
+
+					&.active{
+						.div-tabs-title{
+							background: $dw-color-primary;	
+							margin-bottom: 10px;
+
+							.titleStatus{
+								&.dw-icon-tabs:before{
+									content: "\e90f";
+								}
+							}
+						}
+
+						.div-tabs-content{
+							max-height:200px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.txt-textOneRow{
+	text-overflow: ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+@media screen and (max-width: 768px) { /*当屏幕尺寸小于768px时，应用下面的CSS样式*/
+	.tabs-pc{
+		display: none;
+	}
+
+	.tabs-mobile{
+		display: block;
+	}
+}
+
+@media screen and (min-width: 768px) { /*当屏幕尺寸小于768px时，应用下面的CSS样式*/
+	.tabs-pc{
+		display: block;
+	}
+
+	.tabs-mobile{
+		display: none;
+	}
+}
